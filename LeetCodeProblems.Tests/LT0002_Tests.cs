@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace LeetCodeProblems.Tests
 {
-    public class LT2_Tests
+    public class LT0002_Tests
     {
         // #2 https://leetcode.com/problems/add-two-numbers/
         [Test]

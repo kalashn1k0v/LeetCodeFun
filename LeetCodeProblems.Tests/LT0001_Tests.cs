@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace LeetCodeProblems.Tests
 {
-    public class LT1_Tests
+    public class LT0001_Tests
     {
         // #1 https://leetcode.com/problems/two-sum/
         [Test]
