@@ -9,7 +9,7 @@ namespace LeetCodeProblems.Tests
         //[Test]
         public void DoSmthTest(int x, bool expectedResult)
         {
-            bool result = DoSmth(x);
+            var result = DoSmth(x);
 
             result.Should().Be(expectedResult);
         }

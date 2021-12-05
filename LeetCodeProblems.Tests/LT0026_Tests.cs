@@ -1,5 +1,6 @@
 using FluentAssertions;
 using NUnit.Framework;
+using System.Linq;
 
 namespace LeetCodeProblems.Tests
 {
@@ -16,11 +17,7 @@ namespace LeetCodeProblems.Tests
             var resultLength = RemoveDuplicates(nums);
 
             resultLength.Should().Be(expectedLength);
-
-            for (int i = 0; i < resultLength; i++)
-            {
-                nums[i].Should().Be(expectedResult[i]);
-            }
+            nums.Take(resultLength).Should().BeEquivalentTo(expectedResult);
         }
 
         static public int RemoveDuplicates(int[] nums)
