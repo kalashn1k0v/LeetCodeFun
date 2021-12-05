@@ -12,12 +12,12 @@ namespace LeetCodeProblems.Tests
         [TestCase(new int[] { 9, 9, 9, 9, 9, 9, 9 }, new int[] { 9, 9, 9, 9 }, new int[] { 8, 9, 9, 9, 0, 0, 0, 1 })]
         public void AddTwoNumbersTest(int[] numbers1, int[] numbers2, int[] expectedResult)
         {
-            ListNode list1 = ConstructLinkedList(numbers1);
-            ListNode list2 = ConstructLinkedList(numbers2);
+            ListNode list1 = Util.ToLinkedList(numbers1);
+            ListNode list2 = Util.ToLinkedList(numbers2);
 
             var result = AddTwoNumbers(list1, list2);
 
-            result.Should().BeEquivalentTo(ConstructLinkedList(expectedResult));
+            result.Should().BeEquivalentTo(Util.ToLinkedList(expectedResult));
         }
 
         static ListNode AddTwoNumbers(ListNode l1, ListNode l2)
@@ -56,29 +56,5 @@ namespace LeetCodeProblems.Tests
 
 
 
-        private ListNode ConstructLinkedList(int[] numbers)
-        {
-            ListNode next = null;
-            ListNode currentNode = null;
-
-            for (int i = numbers.Length - 1; i >= 0; i--)
-            {
-                currentNode = new ListNode(numbers[i], next);
-                next = currentNode;
-            }
-            return currentNode;
-        }
-
-        //Definition for singly-linked list.
-        public class ListNode
-        {
-            public int val;
-            public ListNode next;
-            public ListNode(int val = 0, ListNode next = null)
-            {
-                this.val = val;
-                this.next = next;
-            }
-        }
     }
 }
