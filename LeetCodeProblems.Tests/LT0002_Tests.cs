@@ -12,12 +12,12 @@ namespace LeetCodeProblems.Tests
         [TestCase(new int[] { 9, 9, 9, 9, 9, 9, 9 }, new int[] { 9, 9, 9, 9 }, new int[] { 8, 9, 9, 9, 0, 0, 0, 1 })]
         public void AddTwoNumbersTest(int[] numbers1, int[] numbers2, int[] expectedResult)
         {
-            ListNode list1 = Util.ToLinkedList(numbers1);
-            ListNode list2 = Util.ToLinkedList(numbers2);
+            ListNode list1 = numbers1.ToLinkedList();
+            ListNode list2 = numbers2.ToLinkedList();
 
             var result = AddTwoNumbers(list1, list2);
 
-            result.Should().BeEquivalentTo(Util.ToLinkedList(expectedResult));
+            result.Should().BeEquivalentTo(expectedResult.ToLinkedList());
         }
 
         static ListNode AddTwoNumbers(ListNode l1, ListNode l2)

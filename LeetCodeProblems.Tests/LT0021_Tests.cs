@@ -18,12 +18,12 @@ namespace LeetCodeProblems.Tests
         [TestCase(new int[] { 1, 2, 4 }, new int[] { 1, 3 }, new int[] { 1, 1, 2, 3, 4 })]
         public void MergeTwoListsTest(int[] numbers1, int[] numbers2, int[] expectedResult)
         {
-            ListNode list1 = Util.ToLinkedList(numbers1);
-            ListNode list2 = Util.ToLinkedList(numbers2);
+            ListNode list1 = numbers1.ToLinkedList();
+            ListNode list2 = numbers2.ToLinkedList();
 
             var result = MergeTwoLists(list1, list2);
 
-            result.Should().BeEquivalentTo(Util.ToLinkedList(expectedResult));
+            result.Should().BeEquivalentTo(expectedResult.ToLinkedList());
         }
 
         public ListNode MergeTwoLists(ListNode list1, ListNode list2)

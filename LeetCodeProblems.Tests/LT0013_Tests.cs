@@ -199,6 +199,7 @@ namespace LeetCodeProblems.Tests
                     ('X', _) => (10, 1),
                     ('V', _) => (5, 1),
                     ('I', _) => (1, 1),
+                    _ => throw new System.NotImplementedException(),
                 };
 
                 result += value;
