@@ -1,60 +1,54 @@
+using System.Linq;
 using FluentAssertions;
 using NUnit.Framework;
-using System.Linq;
-using System.Text;
 
-namespace LeetCodeProblems.Tests
+namespace LeetCodeProblems.Tests;
+
+public class LT0014_Tests
 {
-    public class LT0014_Tests
+    // #14 https://leetcode.com/problems/longest-common-prefix/
+    [Test]
+    [TestCase(new[] { "flower", "flow", "flight" }, "fl")]
+    [TestCase(new[] { "dog", "racecar", "car" }, "")]
+    [TestCase(new[] { "dog" }, "dog")]
+    [TestCase(new[] { "dog", "do" }, "do")]
+    [TestCase(new[] { "" }, "")]
+    [TestCase(new[] { "", "" }, "")]
+    [TestCase(new[] { "", "b" }, "")]
+    public void DoSmthTest(string[] strs, string expectedResult)
     {
-        // #14 https://leetcode.com/problems/longest-common-prefix/
-        [Test]
-        [TestCase(new string[] { "flower", "flow", "flight" }, "fl")]
-        [TestCase(new string[] { "dog", "racecar", "car" }, "")]
-        [TestCase(new string[] { "dog" }, "dog")]
-        [TestCase(new string[] { "dog", "do" }, "do")]
-        [TestCase(new string[] { "" }, "")]
-        [TestCase(new string[] { "", "" }, "")]
-        [TestCase(new string[] { "", "b" }, "")]
-        public void DoSmthTest(string[] strs, string expectedResult)
-        {
-            string result = LongestCommonPrefix(strs);
+        var result = LongestCommonPrefix(strs);
 
-            result.Should().Be(expectedResult);
-        }
-
-        static public string LongestCommonPrefix(string[] strs)
-        {
-            if (strs.Length == 1)
-                return strs[0];
-
-            int minLength = strs.Min(str => str.Length);
-
-            if (minLength == 0)
-                return "";
-
-            int commonPrefixLength = 0;
-            bool allCharsSame = true;
-
-            while (allCharsSame)
-            {
-                char currentChar = strs[0][commonPrefixLength];
-                for (int i = 1; i < strs.Length; i++)
-                {
-                    allCharsSame &= strs[i][commonPrefixLength] == currentChar;
-                }
-
-                if (!allCharsSame)
-                    break;
-
-                commonPrefixLength++;
-
-                if (commonPrefixLength >= minLength)
-                    break;
-            }
-
-            return strs[0].Substring(0,commonPrefixLength);
-        }
+        result.Should().Be(expectedResult);
     }
 
+    public static string LongestCommonPrefix(string[] strs)
+    {
+        if (strs.Length == 1)
+            return strs[0];
+
+        var minLength = strs.Min(str => str.Length);
+
+        if (minLength == 0)
+            return "";
+
+        var commonPrefixLength = 0;
+        var allCharsSame = true;
+
+        while (allCharsSame)
+        {
+            var currentChar = strs[0][commonPrefixLength];
+            for (var i = 1; i < strs.Length; i++) allCharsSame &= strs[i][commonPrefixLength] == currentChar;
+
+            if (!allCharsSame)
+                break;
+
+            commonPrefixLength++;
+
+            if (commonPrefixLength >= minLength)
+                break;
+        }
+
+        return strs[0].Substring(0, commonPrefixLength);
+    }
 }
